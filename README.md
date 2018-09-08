@@ -1,2 +1,0 @@
-# GiphyExercise
-giphy
