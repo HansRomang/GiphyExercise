@@ -35,7 +35,7 @@ var players = ["Lebron James", "Kevin Durant"];
 function displayPlayers() {
 			var person = $(this).attr("data-name");
 
-	 		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
+	 		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
 			person + "&api_key=intmmw5ClU19IpmuaGMieV3G0Mr68RSX&limit=10";
 
 			 $.ajax({
