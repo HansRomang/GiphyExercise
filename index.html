@@ -10,7 +10,7 @@
 	<div class="container">
     <h1>Search For Your Favorite NBA Player!</h1>
 
-    <!-- Movies will get dumped here -->
+    <!-- Buttons will get dumped here -->
     <div id="player-holder"></div>
 
     <form id="player-form">
@@ -29,52 +29,22 @@
 <script type="text/javascript">
 var players = [];
 
- function renderButtons() {
+function displayPlayers() {
+			var person = $(this).attr("data-name");
 
-	  $("player-holder").empty();
-
-		for (var i = 0; i < players.length; i++) {
-
-		var a = $("<button>");
-
-		a.addClass("player");
-
-		a.attr("data-name", players[i]);
-		
-		a.text(players[i]);
-
-		$("#player-holder").append(a);
-
-		
-
-		}
- }
-
- $("#add-player").on("click", function(event) {
-
-		 event.preventDefault();
-
-		var player = $("#player-input").val().trim();
-
-		players.push(player);
-
-			renderButtons();
-
-			var person = $(this).attr("data-input");
-
-	 	 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    	person + "&api_key=dc6zaTOxFJmzC&limit=10";
+	 		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
+			person + "&api_key=intmmw5ClU19IpmuaGMieV3G0Mr68RSX&limit=10";
 
 			 $.ajax({
   		 url: queryURL,
  			 method: "GET"
 
-
-		})
-
-		 .then(function(response) {
+				
+		}).then(function(response) {
 
 			var results = response.data;
+
+			 console.log(response.data[0].bitly_url);
 
 				for (var i = 0; i < results.length; i++) {
 				
@@ -96,13 +66,48 @@ var players = [];
 
 						$("#gifs-appear-here").prepend(gifDiv);
 
+						
+
             }
           }
-        });
+				});
+			}				
+function renderButtons() {
 
- });
+	$("player-holder").empty();
+
+	for (var i = 0; i < players.length; i++) {
+
+	var a = $("<button>");
+
+	a.addClass("player-btn");
+
+	a.attr("data-name", players[i]);
+
+	a.text(players[i]);
+
+	$("#player-holder").append(a);
+
+	$("#buttons-view").empty();
+	
+	}
+}
+
+$("#add-player").on("click", function(event) {
+
+	event.preventDefault();
+
+	var player = $("#player-input").val().trim();
+
+	players.push(player);
 
  renderButtons();
-</script>
+ });
+
+$(document).on("click", ".player-btn", displayPlayers);
+
+ renderButtons();
+
+ </script>
 </body>
 </html>
