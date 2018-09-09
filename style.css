@@ -1,0 +1,39 @@
+h1, img.gif{
+	text-align: center;
+}
+
+h1 {
+	color: beige;
+}
+
+body {
+	width: 100%;
+	color: teal;
+
+}
+
+button {
+	padding: 1%;
+	margin: 1%;
+}
+
+form#player-form  {
+	text-align: center;
+}
+
+label {
+	font-size: 20px;
+	color: beige;
+}
+
+.item {
+	text-align: center;
+}
+
+div#player-holder {
+	text-align: center;
+}
+
+div.container {
+	background-color: teal;
+}
